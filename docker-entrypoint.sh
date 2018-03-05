@@ -17,14 +17,16 @@ fi
 
 if [[ ! -f "$ZCASH_HOME/.zcash/zcash.conf" ]]; then
     cat << EOF > "$ZCASH_HOME/.zcash/zcash.conf"
-addnode=mainnet.z.cash
-printtoconsole=1
-
+testnet=${ZCASH_TESTNET}
+addnode=${ZCASH_ADDNODE}
 rpcuser=${ZCASH_RPC_USER}
 rpcpassword=${ZCASH_RPC_PASSWORD:-`head -c 32 /dev/urandom | base64`}
 rpcport=${ZCASH_RPC_PORT}
+rpcallowip=${ZCASH_RPC_ALLOWIP}
 gen=${ZCASH_GEN}
 genproclimit=${ZCASH_GEN_PROC_LIMIT}
+equihashsolver=tromp
+printtoconsole=1
 EOF
 fi
 
