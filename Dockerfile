@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Elisey Zanko <elisey.zanko@gmail.com>
+MAINTAINER Anton Bogdanovich <anton@bogdanovich.co>
 
 ENV ZCASH_USER=zcash \
     ZCASH_HOME=/zcash \
@@ -7,10 +7,13 @@ ENV ZCASH_USER=zcash \
     ZCASH_RPC_PASSWORD= \
     ZCASH_RPC_PORT=8232 \
     ZCASH_GEN=0 \
-    ZCASH_GEN_PROC_LIMIT=-1
+    ZCASH_GEN_PROC_LIMIT=-1 \
+    ZCASH_TESTNET=1 \
+    ZCASH_ADDNODE=betatestnet.z.cash \
+    ZCASH_RPC_ALLOWIP=0.0.0.0/0
 
 ARG GOSU_VERSION=1.7
-ARG ZCASH_VERSION=1.0.2
+ARG ZCASH_VERSION=1.0.15
 
 RUN useradd -d "$ZCASH_HOME" -U zcash \
     && mkdir -p "$ZCASH_HOME/.zcash" "$ZCASH_HOME/.zcash-params" \
