@@ -50,6 +50,8 @@ $ docker exec -u zcash zcash zcash-cli getinfo
 After zcash-params successfully downloaded:
 ```
 curl --user zcash:zcash --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo"}' -H 'content-type: text/plain;' http://127.0.0.1:8232/ | jq .
+```
+```
 {
   "result": {
     "version": 1001550,
