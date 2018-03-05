@@ -25,6 +25,8 @@ sudo docker run -d -e ZCASH_USER='zcash' \
 ```
 
 ### API:
+After zcash-params successfully downloaded:
+
 ```
 $ docker exec -u zcash zcash zcash-cli getinfo
 {
