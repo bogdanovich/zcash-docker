@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Elisey Zanko <elisey.zanko@gmail.com>
+MAINTAINER Anton Bogdanovich <anton@bogdanovich.co>
 
 ENV ZCASH_USER=zcash \
     ZCASH_HOME=/zcash \
