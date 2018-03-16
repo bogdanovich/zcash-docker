@@ -19,9 +19,7 @@ RUN useradd -d "$ZCASH_HOME" -U zcash \
     && mkdir -p "$ZCASH_HOME/.zcash" "$ZCASH_HOME/.zcash-params" \
     && chown -R "$ZCASH_USER:$ZCASH_USER" "$ZCASH_HOME" \
     && apt-get update && apt-get install -y --no-install-recommends \
-      apt-transport-https \
-      ca-certificates \
-      wget \
+      apt-transport-https ca-certificates wget nano vim telnet curl \
     && apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 63C4A2169C1B2FA2 \
     && echo "deb https://apt.z.cash/ jessie main" > /etc/apt/sources.list.d/zcash.list \
     && apt-get update && apt-get install -y "zcash=$ZCASH_VERSION" \
@@ -39,5 +37,8 @@ RUN useradd -d "$ZCASH_HOME" -U zcash \
 VOLUME ["$ZCASH_HOME/.zcash-params", "$ZCASH_HOME/.zcash"]
 EXPOSE $ZCASH_RPC_PORT
 
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+WORKDIR $ZCASH_HOME
+
+COPY ./docker-entrypoint.sh ./
+RUN chmod a+rx ./docker-entrypoint.sh
+ENTRYPOINT ["./docker-entrypoint.sh"]
